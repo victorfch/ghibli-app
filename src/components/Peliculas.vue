@@ -7,7 +7,7 @@
           <b-card-title class="text-center">{{pelicula.title}}</b-card-title>
           <b-card-text>{{getDescripcion(pelicula.description)}}</b-card-text>
           <template v-slot:footer>
-            <b-button :to="{path: '/pelicula/' + pelicula.id}" variant="outline-success">Ver mas</b-button>
+            <b-button :to="{name: 'pelicula', params: {id: pelicula.id}}" variant="outline-success">Ver mas</b-button>
           </template>
         </b-card>
       </b-card-group>

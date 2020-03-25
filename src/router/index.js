@@ -9,24 +9,36 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
       path: '/about',
-      name: 'About',
+      name: 'about',
       component: () => import('@/components/About.vue')
     },
     {
       path: '/peliculas',
-      name: 'Peliculas',
+      name: 'peliculas',
       component: () => import('@/components/Peliculas.vue')
     },
     {
       path: '/pelicula/:id',
-      name: 'Pelicula',
+      name: 'pelicula',
       component: () => import('@/components/Pelicula.vue'),
       props: true
+    },
+    {
+      path: '/not-found',
+      name: '404',
+      component: () => import('@/components/NotFound.vue'),
+      props: true
+    },
+    {
+      path: '*',
+      redirect: {
+        name: '404'
+      }
     }
   ]
 })

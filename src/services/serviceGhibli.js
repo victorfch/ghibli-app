@@ -5,3 +5,8 @@ export async function getFilms() {
     let data = await response.json()
     return data;
 }
+export async function getFilm(id) {
+    let response = await fetch(`${BASE_URL}films/${id}`)
+    let data = response.json()
+    return data;
+}

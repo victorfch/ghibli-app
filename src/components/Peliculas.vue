@@ -1,10 +1,17 @@
 <template>
   <div>
     <h1>Peliculas</h1>
-    <b-spinner v-if="mostrarSpinner" variant="primary" label="Spinning"></b-spinner>
 
-    <div v-else>
-      {{peliculas}} 
+    <div class="container">
+      <b-card-group columns>
+        <b-card v-for="(pelicula, id) in peliculas" :key="id">
+          <b-card-title>{{pelicula.title}}</b-card-title>
+          <b-card-text>{{getDescripcion(pelicula.description)}}</b-card-text>
+          <template v-slot:footer>
+            <b-button :to="{path: '/pelicula/' + pelicula.id}" variant="outline-success">Ver mas</b-button>
+          </template>
+        </b-card>
+      </b-card-group>
     </div>
   </div>
 </template>
@@ -18,18 +25,18 @@ export default {
     let mostrarSpinner = true;
     return {
       peliculas,
-      mostrarSpinner,
+      mostrarSpinner
     };
   },
   mounted() {
-    this.esperar();
     this.getPeliculas();
   },
   methods: {
-    esperar() {
-      setTimeout(() => {
-        this.mostrarSpinner = false;
-      }, 500);
+    getDescripcion(value) {
+      if (value.length < 200) {
+        return value;
+      }
+      return value.substring(0, 200).concat("...");
     },
     getPeliculas() {
       let solucion = serviceApi.getFilms();

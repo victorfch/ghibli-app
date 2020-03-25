@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h1>Peliculas</h1>
-
     <div class="container">
+      <h1 class="text-center">Peliculas</h1>
       <b-card-group columns>
         <b-card v-for="(pelicula, id) in peliculas" :key="id">
-          <b-card-title>{{pelicula.title}}</b-card-title>
+          <b-card-title class="text-center">{{pelicula.title}}</b-card-title>
           <b-card-text>{{getDescripcion(pelicula.description)}}</b-card-text>
           <template v-slot:footer>
             <b-button :to="{path: '/pelicula/' + pelicula.id}" variant="outline-success">Ver mas</b-button>
@@ -47,4 +46,7 @@ export default {
 </script>
 
 <style scoped>
+.container {
+    margin: 2%
+}
 </style>

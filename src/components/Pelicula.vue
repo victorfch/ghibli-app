@@ -1,6 +1,10 @@
 <template>
-  <div>
-      {{pelicula}}
+  <div class="container">
+      <h2 class="text-center">{{pelicula.title}}</h2>
+      <strong>Descripcion: </strong><p>{{pelicula.description}}</p>
+      <strong>Director: </strong><p>{{pelicula.director}}</p>
+      <strong>Productor: </strong><p>{{pelicula.producer}}</p>
+      <strong>Fecha de lanzamiento: </strong><p>{{pelicula.release_date}}</p>
   </div>
 </template>
 
@@ -33,4 +37,7 @@ export default {
 </script>
 
 <style scoped>
+.container {
+    margin: 2%
+}
 </style>
